@@ -1,6 +1,3 @@
-
----
-
 # Projeto de Manipulação de Imagens com Python
 
 Este projeto explora diversas técnicas de manipulação de imagens utilizando Python. A primeira funcionalidade implementada é a aplicação de um filtro de desfoque (blur) utilizando a média dos pixels ao redor.
@@ -12,9 +9,14 @@ O projeto é organizado em duas partes principais:
 1. **`image_blur_media.py`**: Contém a implementação da classe `ImageBlurMedia`, responsável por aplicar o desfoque em uma imagem utilizando a média dos pixels vizinhos.
 2. **`main.py`**: Script que utiliza a classe `ImageBlurMedia` para aplicar o desfoque em imagens.
 
-## `image_blur_media.py`
-
 ### Código do Filtro de Desfoque com Média
+
+#### Imagem Original:
+![Imagem Original](data/imagem.jpg)
+#### Imagem com o 1° Filtro de Blur e Redimensionamento
+![Imagem 1° Filtro](data/imagem_blurred_media.png)
+#### Imagem com o 2° Filtro de Blur
+![Imagem 2° Filtro](data/imagem_blurred_media2.png)
 
 ```python
 from PIL import Image
@@ -45,7 +47,7 @@ class ImageBlur:
                         nx = x + dx
                         ny = y + dy
 
-                        if 0 <= nx < largura and 0 <= ny < altura:
+                        if 0 <= nx < largura e 0 <= ny < altura:
                             pixel_valor = imagem.getpixel((nx, ny))
                             soma_r += pixel_valor[0]
                             soma_g += pixel_valor[1]
@@ -69,14 +71,25 @@ class ImageBlur:
 #### Explicação do Código
 
 - **`__init__`**: Método construtor que inicializa os caminhos dos arquivos de entrada e saída.
-- **`apply_blur`**: Método que aplica um desfoque na imagem usando a média dos pixels vizinhos. Cria uma nova imagem onde cada pixel é a média dos valores RGB dos pixels em uma janela 3x3 ao redor.
+- **`apply_blur`**: Método que aplica um desfoque na imagem usando a média dos pixels vizinhos. Cria uma nova imagem onde cada pixel é a média dos valores RGB dos pixels em uma janela **3x3** ao redor.
 
 #### Justificativa para o Redimensionamento da Imagem
 
 - **Por que redimensionar a imagem?**
-    - Durante os testes, observei que o efeito de desfoque se tornava quase imperceptível na imagem original, que tinha uma resolução muito alta (3198x2399 pixels). Devido ao grande número de pixels, o desfoque aplicado a cada pixel individual representava uma mudança mínima na imagem como um todo.
-    - Ao redimensionar a imagem para (600x600) pixels, a proporção do desfoque em relação ao tamanho da imagem aumenta significativamente, tornando o efeito mais visível. Na imagem original, cada pixel modificado representava apenas 0,038% da imagem total, enquanto na imagem redimensionada, cada pixel modificado representa 0,16% da imagem, ou seja, o efeito de desfoque é aproximadamente 421% mais perceptível.
-    - Somente um adendo que eu (o autor) não sei o quanto é correto essa explicação, de forma prática é isso mesmo
+    - Durante os testes, observei que o efeito de desfoque se tornava quase imperceptível na imagem original, que tinha uma resolução muito alta (1634x919 pixels). Devido ao grande número de pixels, o desfoque aplicado a cada pixel individual representava uma mudança mínima na imagem como um todo.
+    - Ao redimensionar a imagem para (600x600) pixels, a proporção do desfoque em relação ao tamanho da imagem aumenta significativamente, tornando o efeito mais visível. Na imagem original, cada pixel modificado representava apenas 0,000067% da imagem total, enquanto na imagem redimensionada, cada pixel modificado representa 0,00028% da imagem, ou seja, o efeito de desfoque é aproximadamente 418% mais perceptível.
+    - Ressalto que essa explicação é baseada em observações práticas e não em cálculos exatos, mas ilustra o motivo pelo qual o redimensionamento foi útil para tornar o efeito de blur mais evidente.
+
+#### Testes com Diferentes Tamanhos de Janela
+
+- **4x4**
+![Filtro 4x4](data/imagem_blurred_media4x4.png)
+- **5x5**
+![Filtro 5x5](data/imagem_blurred_media5x5.png)
+- **6x6**
+![Filtro 6x6](data/imagem_blurred_media6x6.png)
+
+- **Observação**: Ao aumentar o tamanho da janela de blur em editores de imagem, você notará que o efeito de desfoque se torna mais pronunciado. A pergunta que surge é se esses editores aumentam a janela ou reaplicam o blur várias vezes. Nos meus testes, foi mais eficiente aumentar a janela do que reaplicar o blur repetidamente.
 
 ## `main.py`
 
@@ -124,5 +137,3 @@ if __name__ == "__main__":
    ```
 
 ---
-
-Essa versão aprimorada explica mais detalhadamente o processo de redimensionamento e por que ele foi necessário para tornar o efeito de desfoque mais visível.

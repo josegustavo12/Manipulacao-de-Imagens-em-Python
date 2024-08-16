@@ -21,8 +21,8 @@ class ImageBlurMedia:
                 soma_b = 0
                 contagem = 0
 
-                for dx in range(-1, 2):
-                    for dy in range(-1, 2):
+                for dx in range(-3, 3): # a mudança nesses limites influencia no quão borrado a imagem final é
+                    for dy in range(-3, 3):
                         nx = x + dx
                         ny = y + dy
 
