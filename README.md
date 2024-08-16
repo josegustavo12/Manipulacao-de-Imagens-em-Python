@@ -9,8 +9,8 @@ Este projeto explora diversas técnicas de manipulação de imagens utilizando P
 
 O projeto é organizado em duas partes principais:
 
-1. **`image_blur.py`**: Contém a implementação da classe `ImageBlur`, responsável por aplicar o desfoque em uma imagem utilizando a média dos pixels vizinhos.
-2. **`main.py`**: Script que utiliza a classe `ImageBlur` para aplicar o desfoque em imagens.
+1. **`image_blur_media.py`**: Contém a implementação da classe `ImageBlurMedia`, responsável por aplicar o desfoque em uma imagem utilizando a média dos pixels vizinhos.
+2. **`main.py`**: Script que utiliza a classe `ImageBlurMedia` para aplicar o desfoque em imagens.
 
 ## `image_blur_media.py`
 
