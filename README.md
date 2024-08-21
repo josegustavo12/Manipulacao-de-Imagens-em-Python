@@ -73,6 +73,8 @@ class ImageBlur:
 - **`__init__`**: Método construtor que inicializa os caminhos dos arquivos de entrada e saída.
 - **`apply_blur`**: Método que aplica um desfoque na imagem usando a média dos pixels vizinhos. Cria uma nova imagem onde cada pixel é a média dos valores RGB dos pixels em uma janela **3x3** ao redor.
 
+![Desfoque média](data/desfocmedia.png)
+
 #### Justificativa para o Redimensionamento da Imagem
 
 - **Por que redimensionar a imagem?**
@@ -91,11 +93,38 @@ class ImageBlur:
 
 - **Observação**: Ao aumentar o tamanho da janela de blur em editores de imagem, você notará que o efeito de desfoque se torna mais pronunciado. A pergunta que surge é se esses editores aumentam a janela ou reaplicam o blur várias vezes. Nos meus testes, foi mais eficiente aumentar a janela do que reaplicar o blur repetidamente.
 
+Aqui está um exemplo de README detalhado explicando o código de implementação manual do filtro gaussiano e incluindo uma indicação de vídeo em português.
+
+---
+
+# Implementação Manual do Filtro Gaussiano
+Antes de tudo essa implementação teve como base a do site MEDIUM, pelo Guilherme Salustino. Para quem tiver interessado a ver [Clique aqui](https://medium.com/turing-talks/implementa%C3%A7%C3%A3o-do-desfoque-gaussiano-d6e21e314920)
+
+### Introdução:
+**Primeiramente, o que é uma função gaussiana?**
+* A função gaussiana, também conhecida como função normal ou curva de Gauss, é uma função matemática que descreve a distribuição de probabilidades de uma variável contínua. Ela é amplamente usada em estatística, probabilidade e processamento de imagem devido às suas propriedades matemáticas e ao fato de que muitas variáveis naturais seguem uma distribuição normal.
+
+![Função Gaussiana](data/funcgauss.png)
+Em comparação com o Algoritmo de média, podemos melhorar um pouco nosso algoritmo, pode ser útil em vez de uma média aritmética conseguimos adicionar pesos a cada posição, para por exemplo as posições centrais importarem mais que as mais distantes.
+
+![Desfoque Gauss](data/desfocgauss.png)
+
+Esses pesos são representados em uma matriz, chamada de núcleo de convolução (do inglês kernel), as vezes também chamada de máscara.
+Brincando com os pesos e a quantidade de pixels considerados, podemos obter uma variedade de efeitos interessantes, como diferentes tipos de desfoque, detecção de bordas e até mesmo reconhecimento de rostos! Esses mesmos conceitos de matrizes de pesos são usados nas Redes Neurais Convolucionais (CNNs). Nessas redes, os pesos começam com valores aleatórios e são ajustados durante o treinamento para melhorar o desempenho do modelo.
+
+#### Aplicação da Convolução:
+
+```python
+    def convolucao
+
+
+```
+
 ## `main.py`
 
 ### Descrição
 
-O arquivo `main.py` contém a função principal que utiliza a classe `ImageBlur` para aplicar o filtro de desfoque por média em uma imagem.
+O arquivo `main.py` contém a função principal que utiliza a classe `ImageBlurMedia` para aplicar o filtro de desfoque por média em uma imagem e a classe `ImageBlurGauss` para aplicar o filtro de desfoque pela função Gaussiana em uma imagem.
 
 ### Código
 
