@@ -7,7 +7,7 @@ class ImageBlurMedia:
 
     def apply_blur(self):
         imagem = Image.open(self.input_image_path)
-        dimensao = (600,600)
+        dimensao = (300,300)
         imagem = imagem.resize(dimensao)
         imagem = imagem.convert('RGB')
         largura, altura = imagem.size
@@ -38,8 +38,8 @@ class ImageBlurMedia:
                 imagem_blur.putpixel((x, y), (media_r, media_g, media_b))
                 
             # Exibir progresso
-            if x % 10 == 0:
-                print(f"Processando coluna {x} de {largura}")
+                if x % 10 == 0 and y % 10 == 0:
+                    print(f"Convolução - Posição ({x}, {y})")
 
         imagem_blur.save(self.output_image_path)
         imagem_blur.show()

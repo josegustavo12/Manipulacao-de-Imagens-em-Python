@@ -120,8 +120,9 @@ Brincando com os pesos e a quantidade de pixels considerados, podemos obter uma 
 
 ```
 
+---
 
-## Função MergeFour
+# Função MergeFour
 * Essa função vai servir para juntar 4 imagens diferentes em 1 imagem só, para fins de comparação
 * No caso dos testes que eu utilizei, fiz a lógica travada em imagens de 300x300, formando uma imagem 600x600 ao final da função, no futuro eu posso melhorar isso e fazer com que o usuário escolha
 ```python
@@ -163,7 +164,7 @@ class MergeFour(): # passei mto tempo pensando nesse nome e ainda não gostei :(
 #### Exemplo de imagem:
 ![Imagem Merged](data/imagem_merged.png)
 
-## `main.py`
+# `main.py`
 
 ### Descrição
 
